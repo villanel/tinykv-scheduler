@@ -54,8 +54,37 @@ service Scheduler {
     rpc UpdateGCSafePoint(UpdateGCSafePointRequest) returns (UpdateGCSafePointResponse) {}
 
     rpc GetOperator(GetOperatorRequest) returns (GetOperatorResponse) {}
+    rpc OfflineStore(OfflineRequest) returns (OfflineResponse) {}
+    rpc RemoveStore(RemoveStoreRequest) returns (RemoveStoreResponse) {}
+}
+message OfflineRequest {
+        RequestHeader header = 1;
+
+    // Store_id is the ID of the Store which be sent to.
+    uint64 Store_id = 2;
 }
 
+message RemoveStoreRequest {
+        RequestHeader header = 1;
+
+    // Store_id is the ID of the Store which be sent to.
+    uint64 Store_id = 2;
+}
+message OfflineResponse {
+    // Store_id is the ID of the Store which be sent to.
+        ResponseHeader header = 1;
+
+    uint64 Peer_count = 2;
+}
+message RemoveStoreResponse {
+    // Store_id is the ID of the Store which be sent to.
+            ResponseHeader header = 1;
+
+        bool StoreRemoved = 2;
+
+        Error error = 3;
+
+}
 message RequestHeader {
     // cluster_id is the ID of the cluster which be sent to.
     uint64 cluster_id = 1;

@@ -44,6 +44,9 @@ type Client interface {
 	StoreHeartbeat(ctx context.Context, stats *schedulerpb.StoreStats) error
 	RegionHeartbeat(*schedulerpb.RegionHeartbeatRequest) error
 	SetRegionHeartbeatResponseHandler(storeID uint64, h func(*schedulerpb.RegionHeartbeatResponse))
+	OfflineStore(ctx context.Context, request uint64) (uint64, error)
+	RemoveStore(ctx context.Context, request uint64) (bool, error)
+	GetAllStores(ctx context.Context) ([]*metapb.Store, error)
 	Close()
 }
 
@@ -379,7 +382,51 @@ func (c *client) Close() {
 func (c *client) GetClusterID(context.Context) uint64 {
 	return c.clusterID
 }
+func (c *client) OfflineStore(ctx context.Context, store uint64) (uint64, error) {
+	var resp *schedulerpb.OfflineResponse
+	err := c.doRequest(ctx, func(ctx context.Context, client schedulerpb.SchedulerClient) error {
+		var err1 error
+		resp, err1 = client.OfflineStore(ctx, &schedulerpb.OfflineRequest{
+			Header:  c.requestHeader(),
+			StoreId: store,
+		})
+		return err1
+	})
+	if err != nil {
+		return 0, err
+	}
+	return resp.GetPeerCount(), nil
+}
 
+func (c *client) RemoveStore(ctx context.Context, store uint64) (bool, error) {
+	var resp *schedulerpb.RemoveStoreResponse
+	err := c.doRequest(ctx, func(ctx context.Context, client schedulerpb.SchedulerClient) error {
+		var err1 error
+		resp, err1 = client.RemoveStore(ctx, &schedulerpb.RemoveStoreRequest{
+			Header:  c.requestHeader(),
+			StoreId: store,
+		})
+		return err1
+	})
+	if err != nil {
+		return false, err
+	}
+	return resp.GetStoreRemoved(), nil
+}
+func (c *client) GetAllStores(ctx context.Context) ([]*metapb.Store, error) {
+	var resp *schedulerpb.GetAllStoresResponse
+	err := c.doRequest(ctx, func(ctx context.Context, client schedulerpb.SchedulerClient) error {
+		var err1 error
+		resp, err1 = client.GetAllStores(ctx, &schedulerpb.GetAllStoresRequest{
+			Header: c.requestHeader(),
+		})
+		return err1
+	})
+	if err != nil {
+		return nil, err
+	}
+	return resp.GetStores(), nil
+}
 func (c *client) AllocID(ctx context.Context) (uint64, error) {
 	var resp *schedulerpb.AllocIDResponse
 	err := c.doRequest(ctx, func(ctx context.Context, client schedulerpb.SchedulerClient) error {

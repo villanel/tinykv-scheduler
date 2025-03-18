@@ -23,6 +23,7 @@ import (
 	"github.com/pingcap-incubator/tinykv/proto/pkg/metapb"
 	"github.com/pingcap-incubator/tinykv/proto/pkg/schedulerpb"
 	"github.com/pingcap-incubator/tinykv/scheduler/server/core"
+	"github.com/pingcap-incubator/tinykv/scheduler/server/schedule/operator"
 	"github.com/pingcap/log"
 	"github.com/pkg/errors"
 	"go.uber.org/zap"
@@ -168,7 +169,13 @@ func (s *Server) GetStore(ctx context.Context, request *schedulerpb.GetStoreRequ
 	if cluster == nil {
 		return &schedulerpb.GetStoreResponse{Header: s.notBootstrappedHeader()}, nil
 	}
-
+	stores := cluster.GetStores()
+	if stores == nil {
+		return nil, status.Errorf(codes.Unknown, "invalid store ID, not foun")
+	}
+	for _, i := range stores {
+		print(i.GetID())
+	}
 	storeID := request.GetStoreId()
 	store := cluster.GetStore(storeID)
 	if store == nil {
@@ -384,6 +391,104 @@ func (s *Server) RegionHeartbeat(stream schedulerpb.Scheduler_RegionHeartbeatSer
 	}
 }
 
+func (s *Server) RemoveStore(ctx context.Context, request *schedulerpb.RemoveStoreRequest) (*schedulerpb.RemoveStoreResponse, error) {
+	if err := s.validateRequest(request.GetHeader()); err != nil {
+		return nil, err
+	}
+	cluster := s.GetRaftCluster()
+	store := cluster.GetStore(request.GetStoreId())
+	if store == nil {
+		return &schedulerpb.RemoveStoreResponse{
+			Header:       s.header(),
+			StoreRemoved: false,
+		}, nil
+	}
+	if store.IsTombstone() || store.GetRegionCount() == 0 {
+		cluster.core.DeleteStore(store)
+		return &schedulerpb.RemoveStoreResponse{
+			Header:       s.header(),
+			StoreRemoved: true,
+		}, nil
+	}
+	return &schedulerpb.RemoveStoreResponse{
+		Header:       s.header(),
+		StoreRemoved: false,
+	}, nil
+}
+func (s *Server) OfflineStore(ctx context.Context, request *schedulerpb.OfflineRequest) (*schedulerpb.OfflineResponse, error) {
+	if err := s.validateRequest(request.GetHeader()); err != nil {
+		return nil, err
+	}
+	cluster := s.GetRaftCluster()
+	// sete store state to offline
+	store := cluster.GetStore(request.StoreId)
+	if store == nil {
+
+		return &schedulerpb.OfflineResponse{
+			Header: s.header(),
+		}, nil
+	}
+	if store.IsBlocked() {
+
+		err := cluster.BlockStore(request.GetStoreId())
+		if err != nil {
+			return nil, status.Errorf(codes.Unknown, err.Error())
+		}
+	}
+	err := cluster.RemoveStore(request.GetStoreId())
+	if err != nil {
+		return nil, status.Errorf(codes.Unknown, err.Error())
+	}
+	region := cluster.GetStoreRegions(request.GetStoreId())
+	nums := 0
+	for _, r := range region {
+		peer := r.GetStorePeer(request.GetStoreId())
+		if peer != nil {
+			nums++
+			op := s.movePeer(r, peer, "offline")
+			if op != nil {
+				cluster.coordinator.opController.AddOperator(op)
+			}
+		}
+	}
+	return &schedulerpb.OfflineResponse{
+		Header:    s.header(),
+		PeerCount: uint64(nums),
+	}, nil
+
+}
+
+func (s *Server) movePeer(region *core.RegionInfo, peer *metapb.Peer, status string) *operator.Operator {
+	removeExtra := fmt.Sprintf("remove-extra-%s-replica", status)
+	// Check the number of replicas first.
+	cluster := s.GetRaftCluster()
+	if len(region.GetPeers()) > cluster.GetMaxReplicas() {
+		op, err := operator.CreateRemovePeerOperator(removeExtra, cluster, operator.OpReplica, region, peer.GetStoreId())
+		if err != nil {
+			return nil
+		}
+		return op
+	}
+	checker := s.cluster.coordinator.checkers
+	storeID := checker.ReplicaChecker.SelectBestReplacementStore(region, peer)
+	if storeID == 0 {
+		log.Debug("no best store to add replica", zap.Uint64("region-id", region.GetID()))
+		return nil
+	}
+	newPeer, err := cluster.AllocPeer(storeID)
+	if err != nil {
+		return nil
+	}
+
+	replace := fmt.Sprintf("replace-%s-replica", status)
+	var op *operator.Operator
+	op, err = operator.CreateOfflinePeerOperator(replace, cluster, region, operator.OpReplica, peer.GetStoreId(), newPeer.GetStoreId(), newPeer.GetId())
+	if err != nil {
+		return nil
+	}
+	return op
+}
+
 // GetRegion implements gRPC PDServer.
 func (s *Server) GetRegion(ctx context.Context, request *schedulerpb.GetRegionRequest) (*schedulerpb.GetRegionResponse, error) {
 	if err := s.validateRequest(request.GetHeader()); err != nil {
@@ -450,7 +555,7 @@ func (s *Server) ScanRegions(ctx context.Context, request *schedulerpb.ScanRegio
 	if cluster == nil {
 		return &schedulerpb.ScanRegionsResponse{Header: s.notBootstrappedHeader()}, nil
 	}
-	regions := cluster.ScanRegions(request.GetStartKey(), request.GetEndKey(), int(request.GetLimit()))
+	regions := cluster.GetRegions()
 	resp := &schedulerpb.ScanRegionsResponse{Header: s.header()}
 	for _, r := range regions {
 		leader := r.GetLeader()

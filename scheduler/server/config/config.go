@@ -130,9 +130,9 @@ func NewConfig() *Config {
 
 	fs.StringVar(&cfg.DataDir, "data-dir", "", "path to the data directory (default 'default.${name}')")
 	fs.StringVar(&cfg.ClientUrls, "client-urls", defaultClientUrls, "url for client traffic")
-	fs.StringVar(&cfg.AdvertiseClientUrls, "advertise-client-urls", "", "advertise url for client traffic (default '${client-urls}')")
+	fs.StringVar(&cfg.AdvertiseClientUrls, "advertise-client-urls", defaultAdvClientUrls, "advertise url for client traffic (default '${client-urls}')")
 	fs.StringVar(&cfg.PeerUrls, "peer-urls", defaultPeerUrls, "url for peer traffic")
-	fs.StringVar(&cfg.AdvertisePeerUrls, "advertise-peer-urls", "", "advertise url for peer traffic (default '${peer-urls}')")
+	fs.StringVar(&cfg.AdvertisePeerUrls, "advertise-peer-urls", defaultAdvPeerUrls, "advertise url for peer traffic (default '${peer-urls}')")
 	fs.StringVar(&cfg.InitialCluster, "initial-cluster", "", "initial cluster configuration for bootstrapping, e,g. pd=http://127.0.0.1:2380")
 
 	fs.StringVar(&cfg.Log.Level, "L", "", "log level: debug, info, warn, error, fatal (default 'info')")
@@ -153,8 +153,10 @@ const (
 	defaultAutoCompactionRetention = "1h"
 
 	defaultName                = "pd"
-	defaultClientUrls          = "http://127.0.0.1:2379"
-	defaultPeerUrls            = "http://127.0.0.1:2380"
+	defaultAdvClientUrls       = "http://0.0.0.0:2379"
+	defaultClientUrls          = "http://0.0.0.0:2379"
+	defaultPeerUrls            = "http://0.0.0.0:2380"
+	defaultAdvPeerUrls         = "http://0.0.0.0:2380"
 	defaultInitialClusterState = embed.ClusterStateFlagNew
 
 	// etcd use 100ms for heartbeat and 1s for election timeout.
@@ -336,9 +338,9 @@ func (c *Config) Adjust(meta *toml.MetaData) error {
 	}
 
 	adjustString(&c.ClientUrls, defaultClientUrls)
-	adjustString(&c.AdvertiseClientUrls, c.ClientUrls)
+	// adjustString(&c.AdvertiseClientUrls, c.ClientUrls)
 	adjustString(&c.PeerUrls, defaultPeerUrls)
-	adjustString(&c.AdvertisePeerUrls, c.PeerUrls)
+	// adjustString(&c.AdvertisePeerUrls, c.PeerUrls)
 
 	if len(c.InitialCluster) == 0 {
 		// The advertise peer urls may be http://127.0.0.1:2380,http://127.0.0.1:2381

@@ -26,7 +26,7 @@ import (
 type CheckerController struct {
 	cluster        opt.Cluster
 	opController   *OperatorController
-	replicaChecker *checker.ReplicaChecker
+	ReplicaChecker *checker.ReplicaChecker
 }
 
 // NewCheckerController create a new CheckerController.
@@ -35,7 +35,7 @@ func NewCheckerController(ctx context.Context, cluster opt.Cluster, opController
 	return &CheckerController{
 		cluster:        cluster,
 		opController:   opController,
-		replicaChecker: checker.NewReplicaChecker(cluster),
+		ReplicaChecker: checker.NewReplicaChecker(cluster),
 	}
 }
 
@@ -47,7 +47,7 @@ func (c *CheckerController) CheckRegion(region *core.RegionInfo) (bool, []*opera
 	checkerIsBusy := true
 	if opController.OperatorCount(operator.OpReplica) < c.cluster.GetReplicaScheduleLimit() {
 		checkerIsBusy = false
-		if op := c.replicaChecker.Check(region); op != nil {
+		if op := c.ReplicaChecker.Check(region); op != nil {
 			return checkerIsBusy, []*operator.Operator{op}
 		}
 	}
