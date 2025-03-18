@@ -18,12 +18,12 @@ import (
 	"sync"
 	"time"
 
-	"github.com/pingcap-incubator/tinykv/scheduler/pkg/logutil"
-	"github.com/pingcap-incubator/tinykv/scheduler/server/config"
-	"github.com/pingcap-incubator/tinykv/scheduler/server/schedule"
-	"github.com/pingcap-incubator/tinykv/scheduler/server/schedule/operator"
 	"github.com/pingcap/log"
 	"github.com/pkg/errors"
+	"github.com/villanel/tinykv-scheduler/scheduler/pkg/logutil"
+	"github.com/villanel/tinykv-scheduler/scheduler/server/config"
+	"github.com/villanel/tinykv-scheduler/scheduler/server/schedule"
+	"github.com/villanel/tinykv-scheduler/scheduler/server/schedule/operator"
 	"go.uber.org/zap"
 )
 

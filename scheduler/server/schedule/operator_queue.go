@@ -16,7 +16,7 @@ package schedule
 import (
 	"time"
 
-	"github.com/pingcap-incubator/tinykv/scheduler/server/schedule/operator"
+	"github.com/villanel/tinykv-scheduler/scheduler/server/schedule/operator"
 )
 
 type operatorWithTime struct {

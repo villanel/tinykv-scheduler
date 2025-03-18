@@ -20,11 +20,11 @@ import (
 	"time"
 
 	opentracing "github.com/opentracing/opentracing-go"
-	"github.com/pingcap-incubator/tinykv/proto/pkg/metapb"
-	"github.com/pingcap-incubator/tinykv/proto/pkg/schedulerpb"
-	"github.com/pingcap-incubator/tinykv/scheduler/pkg/grpcutil"
 	"github.com/pingcap/log"
 	"github.com/pkg/errors"
+	"github.com/villanel/tinykv-scheduler/proto/pkg/metapb"
+	"github.com/villanel/tinykv-scheduler/proto/pkg/schedulerpb"
+	"github.com/villanel/tinykv-scheduler/scheduler/pkg/grpcutil"
 	"go.uber.org/zap"
 	"google.golang.org/grpc"
 )

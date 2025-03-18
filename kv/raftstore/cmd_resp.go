@@ -1,9 +1,9 @@
 package raftstore
 
 import (
-	"github.com/pingcap-incubator/tinykv/kv/raftstore/util"
-	"github.com/pingcap-incubator/tinykv/proto/pkg/errorpb"
-	"github.com/pingcap-incubator/tinykv/proto/pkg/raft_cmdpb"
+	"github.com/villanel/tinykv-scheduler/kv/raftstore/util"
+	"github.com/villanel/tinykv-scheduler/proto/pkg/errorpb"
+	"github.com/villanel/tinykv-scheduler/proto/pkg/raft_cmdpb"
 )
 
 func ensureRespHeader(resp *raft_cmdpb.RaftCmdResponse) {

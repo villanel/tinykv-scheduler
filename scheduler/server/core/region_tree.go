@@ -17,9 +17,9 @@ import (
 	"fmt"
 	"math/rand"
 
-	"github.com/pingcap-incubator/tinykv/proto/pkg/metapb"
-	"github.com/pingcap-incubator/tinykv/scheduler/pkg/btree"
 	"github.com/pingcap/log"
+	"github.com/villanel/tinykv-scheduler/proto/pkg/metapb"
+	"github.com/villanel/tinykv-scheduler/scheduler/pkg/btree"
 	"go.uber.org/zap"
 )
 

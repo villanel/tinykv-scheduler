@@ -1,8 +1,8 @@
 package message
 
 import (
-	"github.com/pingcap-incubator/tinykv/proto/pkg/raft_cmdpb"
-	"github.com/pingcap-incubator/tinykv/proto/pkg/raft_serverpb"
+	"github.com/villanel/tinykv-scheduler/proto/pkg/raft_cmdpb"
+	"github.com/villanel/tinykv-scheduler/proto/pkg/raft_serverpb"
 )
 
 type RaftRouter interface {

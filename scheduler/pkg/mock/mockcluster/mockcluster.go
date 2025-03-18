@@ -18,12 +18,12 @@ import (
 	"time"
 
 	"github.com/gogo/protobuf/proto"
-	"github.com/pingcap-incubator/tinykv/proto/pkg/metapb"
-	"github.com/pingcap-incubator/tinykv/proto/pkg/schedulerpb"
-	"github.com/pingcap-incubator/tinykv/scheduler/pkg/mock/mockid"
-	"github.com/pingcap-incubator/tinykv/scheduler/pkg/mock/mockoption"
-	"github.com/pingcap-incubator/tinykv/scheduler/server/core"
 	"github.com/pingcap/log"
+	"github.com/villanel/tinykv-scheduler/proto/pkg/metapb"
+	"github.com/villanel/tinykv-scheduler/proto/pkg/schedulerpb"
+	"github.com/villanel/tinykv-scheduler/scheduler/pkg/mock/mockid"
+	"github.com/villanel/tinykv-scheduler/scheduler/pkg/mock/mockoption"
+	"github.com/villanel/tinykv-scheduler/scheduler/server/core"
 	"go.uber.org/zap"
 )
 

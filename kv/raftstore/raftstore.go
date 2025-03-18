@@ -7,19 +7,19 @@ import (
 
 	"github.com/Connor1996/badger"
 	"github.com/Connor1996/badger/y"
-	"github.com/pingcap-incubator/tinykv/kv/config"
-	"github.com/pingcap-incubator/tinykv/kv/raftstore/message"
-	"github.com/pingcap-incubator/tinykv/kv/raftstore/meta"
-	"github.com/pingcap-incubator/tinykv/kv/raftstore/runner"
-	"github.com/pingcap-incubator/tinykv/kv/raftstore/scheduler_client"
-	"github.com/pingcap-incubator/tinykv/kv/raftstore/snap"
-	"github.com/pingcap-incubator/tinykv/kv/util/engine_util"
-	"github.com/pingcap-incubator/tinykv/kv/util/worker"
-	"github.com/pingcap-incubator/tinykv/log"
-	"github.com/pingcap-incubator/tinykv/proto/pkg/metapb"
-	rspb "github.com/pingcap-incubator/tinykv/proto/pkg/raft_serverpb"
-	"github.com/pingcap-incubator/tinykv/scheduler/pkg/btree"
 	"github.com/pingcap/errors"
+	"github.com/villanel/tinykv-scheduler/kv/config"
+	"github.com/villanel/tinykv-scheduler/kv/raftstore/message"
+	"github.com/villanel/tinykv-scheduler/kv/raftstore/meta"
+	"github.com/villanel/tinykv-scheduler/kv/raftstore/runner"
+	"github.com/villanel/tinykv-scheduler/kv/raftstore/scheduler_client"
+	"github.com/villanel/tinykv-scheduler/kv/raftstore/snap"
+	"github.com/villanel/tinykv-scheduler/kv/util/engine_util"
+	"github.com/villanel/tinykv-scheduler/kv/util/worker"
+	"github.com/villanel/tinykv-scheduler/log"
+	"github.com/villanel/tinykv-scheduler/proto/pkg/metapb"
+	rspb "github.com/villanel/tinykv-scheduler/proto/pkg/raft_serverpb"
+	"github.com/villanel/tinykv-scheduler/scheduler/pkg/btree"
 )
 
 var _ btree.Item = &regionItem{}
@@ -104,8 +104,8 @@ type Transport interface {
 	Send(msg *rspb.RaftMessage) error
 }
 
-/// loadPeers loads peers in this store. It scans the db engine, loads all regions and their peers from it
-/// WARN: This store should not be used before initialized.
+// / loadPeers loads peers in this store. It scans the db engine, loads all regions and their peers from it
+// / WARN: This store should not be used before initialized.
 func (bs *Raftstore) loadPeers() ([]*peer, error) {
 	// Scan region meta to get saved regions.
 	startKey := meta.RegionMetaMinKey

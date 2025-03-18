@@ -22,11 +22,11 @@ import (
 	"testing"
 	"time"
 
-	pd "github.com/pingcap-incubator/tinykv/scheduler/client"
-	"github.com/pingcap-incubator/tinykv/scheduler/pkg/testutil"
-	"github.com/pingcap-incubator/tinykv/scheduler/server"
-	"github.com/pingcap-incubator/tinykv/scheduler/tests"
 	. "github.com/pingcap/check"
+	pd "github.com/villanel/tinykv-scheduler/scheduler/client"
+	"github.com/villanel/tinykv-scheduler/scheduler/pkg/testutil"
+	"github.com/villanel/tinykv-scheduler/scheduler/server"
+	"github.com/villanel/tinykv-scheduler/scheduler/tests"
 	"go.etcd.io/etcd/clientv3"
 )
 

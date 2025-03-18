@@ -1,4 +1,4 @@
-module github.com/pingcap-incubator/tinykv/proto/_tools
+module github.com/villanel/tinykv-scheduler/proto/_tools
 
 require (
 	github.com/gogo/protobuf v1.1.1

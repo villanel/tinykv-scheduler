@@ -7,8 +7,8 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/pingcap-incubator/tinykv/kv/raftstore/scheduler_client"
-	"github.com/pingcap-incubator/tinykv/proto/pkg/metapb"
+	"github.com/villanel/tinykv-scheduler/kv/raftstore/scheduler_client"
+	"github.com/villanel/tinykv-scheduler/proto/pkg/metapb"
 )
 
 func main() {

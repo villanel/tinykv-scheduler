@@ -3,10 +3,10 @@ package transaction
 import (
 	"testing"
 
-	"github.com/pingcap-incubator/tinykv/kv/transaction/mvcc"
-	"github.com/pingcap-incubator/tinykv/kv/util/engine_util"
-	"github.com/pingcap-incubator/tinykv/proto/pkg/kvrpcpb"
 	"github.com/stretchr/testify/assert"
+	"github.com/villanel/tinykv-scheduler/kv/transaction/mvcc"
+	"github.com/villanel/tinykv-scheduler/kv/util/engine_util"
+	"github.com/villanel/tinykv-scheduler/proto/pkg/kvrpcpb"
 )
 
 // TestGetValue4B getting a value works in the simple case.

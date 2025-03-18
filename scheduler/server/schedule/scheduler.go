@@ -19,11 +19,11 @@ import (
 	"strings"
 	"time"
 
-	"github.com/pingcap-incubator/tinykv/scheduler/server/core"
-	"github.com/pingcap-incubator/tinykv/scheduler/server/schedule/operator"
-	"github.com/pingcap-incubator/tinykv/scheduler/server/schedule/opt"
 	"github.com/pingcap/log"
 	"github.com/pkg/errors"
+	"github.com/villanel/tinykv-scheduler/scheduler/server/core"
+	"github.com/villanel/tinykv-scheduler/scheduler/server/schedule/operator"
+	"github.com/villanel/tinykv-scheduler/scheduler/server/schedule/opt"
 	"go.uber.org/zap"
 )
 
@@ -58,7 +58,7 @@ type ConfigDecoder func(v interface{}) error
 // ConfigSliceDecoderBuilder used to build slice decoder of the config.
 type ConfigSliceDecoderBuilder func([]string) ConfigDecoder
 
-//ConfigJSONDecoder used to build a json decoder of the config.
+// ConfigJSONDecoder used to build a json decoder of the config.
 func ConfigJSONDecoder(data []byte) ConfigDecoder {
 	return func(v interface{}) error {
 		return DecodeConfig(data, v)

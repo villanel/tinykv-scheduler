@@ -20,9 +20,9 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/pingcap-incubator/tinykv/proto/pkg/metapb"
-	"github.com/pingcap-incubator/tinykv/scheduler/server/core"
 	"github.com/pingcap/log"
+	"github.com/villanel/tinykv-scheduler/proto/pkg/metapb"
+	"github.com/villanel/tinykv-scheduler/scheduler/server/core"
 	"go.uber.org/zap"
 )
 
@@ -331,10 +331,10 @@ func CreateTransferLeaderOperator(desc string, region *core.RegionInfo, sourceSt
 
 // interleaveStepGroups interleaves two slice of step groups. For example:
 //
-//  a = [[opA1, opA2], [opA3], [opA4, opA5, opA6]]
-//  b = [[opB1], [opB2], [opB3, opB4], [opB5, opB6]]
-//  c = interleaveStepGroups(a, b, 0)
-//  c == [opA1, opA2, opB1, opA3, opB2, opA4, opA5, opA6, opB3, opB4, opB5, opB6]
+//	a = [[opA1, opA2], [opA3], [opA4, opA5, opA6]]
+//	b = [[opB1], [opB2], [opB3, opB4], [opB5, opB6]]
+//	c = interleaveStepGroups(a, b, 0)
+//	c == [opA1, opA2, opB1, opA3, opB2, opA4, opA5, opA6, opB3, opB4, opB5, opB6]
 //
 // sizeHint is a hint for the capacity of returned slice.
 func interleaveStepGroups(a, b [][]OpStep, sizeHint int) []OpStep {

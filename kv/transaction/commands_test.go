@@ -10,12 +10,12 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/pingcap-incubator/tinykv/kv/server"
-	"github.com/pingcap-incubator/tinykv/kv/storage"
-	"github.com/pingcap-incubator/tinykv/kv/transaction/mvcc"
-	"github.com/pingcap-incubator/tinykv/kv/util/engine_util"
-	"github.com/pingcap-incubator/tinykv/proto/pkg/kvrpcpb"
 	"github.com/stretchr/testify/assert"
+	"github.com/villanel/tinykv-scheduler/kv/server"
+	"github.com/villanel/tinykv-scheduler/kv/storage"
+	"github.com/villanel/tinykv-scheduler/kv/transaction/mvcc"
+	"github.com/villanel/tinykv-scheduler/kv/util/engine_util"
+	"github.com/villanel/tinykv-scheduler/proto/pkg/kvrpcpb"
 )
 
 // testBuilder is a helper type for running command tests.

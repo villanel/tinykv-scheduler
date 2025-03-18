@@ -18,9 +18,9 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/pingcap-incubator/tinykv/scheduler/server/schedule"
-	"github.com/pingcap-incubator/tinykv/scheduler/server/schedule/opt"
 	"github.com/pingcap/log"
+	"github.com/villanel/tinykv-scheduler/scheduler/server/schedule"
+	"github.com/villanel/tinykv-scheduler/scheduler/server/schedule/opt"
 )
 
 // options for interval of schedulers

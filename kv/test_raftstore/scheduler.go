@@ -6,13 +6,13 @@ import (
 	"sync"
 
 	"github.com/google/btree"
-	"github.com/pingcap-incubator/tinykv/kv/raftstore/util"
-	"github.com/pingcap-incubator/tinykv/kv/util/engine_util"
-	"github.com/pingcap-incubator/tinykv/log"
-	"github.com/pingcap-incubator/tinykv/proto/pkg/eraftpb"
-	"github.com/pingcap-incubator/tinykv/proto/pkg/metapb"
-	"github.com/pingcap-incubator/tinykv/proto/pkg/schedulerpb"
 	"github.com/pingcap/errors"
+	"github.com/villanel/tinykv-scheduler/kv/raftstore/util"
+	"github.com/villanel/tinykv-scheduler/kv/util/engine_util"
+	"github.com/villanel/tinykv-scheduler/log"
+	"github.com/villanel/tinykv-scheduler/proto/pkg/eraftpb"
+	"github.com/villanel/tinykv-scheduler/proto/pkg/metapb"
+	"github.com/villanel/tinykv-scheduler/proto/pkg/schedulerpb"
 )
 
 var _ btree.Item = &regionItem{}

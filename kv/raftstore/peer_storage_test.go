@@ -5,14 +5,14 @@ import (
 	"testing"
 
 	"github.com/Connor1996/badger"
-	"github.com/pingcap-incubator/tinykv/kv/raftstore/meta"
-	"github.com/pingcap-incubator/tinykv/kv/raftstore/util"
-	"github.com/pingcap-incubator/tinykv/kv/util/engine_util"
-	"github.com/pingcap-incubator/tinykv/proto/pkg/eraftpb"
-	rspb "github.com/pingcap-incubator/tinykv/proto/pkg/raft_serverpb"
-	"github.com/pingcap-incubator/tinykv/raft"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
+	"github.com/villanel/tinykv-scheduler/kv/raftstore/meta"
+	"github.com/villanel/tinykv-scheduler/kv/raftstore/util"
+	"github.com/villanel/tinykv-scheduler/kv/util/engine_util"
+	"github.com/villanel/tinykv-scheduler/proto/pkg/eraftpb"
+	rspb "github.com/villanel/tinykv-scheduler/proto/pkg/raft_serverpb"
+	"github.com/villanel/tinykv-scheduler/raft"
 )
 
 // NewPeerStorageFromZero generates a PeerStorage whose Term & index starts at zero, instead of 5

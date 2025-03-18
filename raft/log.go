@@ -15,15 +15,16 @@
 package raft
 
 import (
-	pb "github.com/pingcap-incubator/tinykv/proto/pkg/eraftpb"
+	"log"
+
+	pb "github.com/villanel/tinykv-scheduler/proto/pkg/eraftpb"
 )
-import "log"
 
 // RaftLog manage the log entries, its struct look like:
 //
-//  snapshot/first.....applied....committed....stabled.....last
-//  --------|------------------------------------------------|
-//                            log entries
+//	snapshot/first.....applied....committed....stabled.....last
+//	--------|------------------------------------------------|
+//	                          log entries
 //
 // for simplify the RaftLog implement should manage all log entries
 // that not truncated
@@ -230,7 +231,7 @@ func (l *RaftLog) Term(i uint64) (uint64, error) {
 	return t, err
 }
 
-//get entries
+// get entries
 func (l *RaftLog) entry(lo uint64) ([]*pb.Entry, error) {
 	if lo > l.LastIndex() {
 		return nil, nil
@@ -255,7 +256,7 @@ func (l *RaftLog) unstableTerm(i uint64) (uint64, bool) {
 	return 0, false
 }
 
-//返回日志不匹配的index
+// 返回日志不匹配的index
 func (l *RaftLog) findConflictByTerm(index uint64, term uint64) uint64 {
 	if li := l.LastIndex(); index > li {
 		// NB: such calls should not exist, but since there is a straightfoward
@@ -277,7 +278,6 @@ func (l *RaftLog) findConflictByTerm(index uint64, term uint64) uint64 {
 	return index
 }
 
-//
 func (l *RaftLog) truncateAndAppend(ents []pb.Entry) {
 	after := ents[0].Index
 	switch {
@@ -299,7 +299,7 @@ func (l *RaftLog) truncateAndAppend(ents []pb.Entry) {
 	}
 }
 
-//比较日志，能否投票
+// 比较日志，能否投票
 func (l *RaftLog) isUpToDate(lasti, term uint64) bool {
 	lastTerm, err := l.Term(l.LastIndex())
 	if err != nil {

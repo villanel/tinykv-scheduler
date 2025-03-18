@@ -19,14 +19,14 @@ import (
 	"time"
 	"unsafe"
 
-	"github.com/pingcap-incubator/tinykv/proto/pkg/schedulerpb"
-	"github.com/pingcap-incubator/tinykv/scheduler/pkg/etcdutil"
-	"github.com/pingcap-incubator/tinykv/scheduler/pkg/tsoutil"
-	"github.com/pingcap-incubator/tinykv/scheduler/pkg/typeutil"
-	"github.com/pingcap-incubator/tinykv/scheduler/server/kv"
-	"github.com/pingcap-incubator/tinykv/scheduler/server/member"
 	"github.com/pingcap/log"
 	"github.com/pkg/errors"
+	"github.com/villanel/tinykv-scheduler/proto/pkg/schedulerpb"
+	"github.com/villanel/tinykv-scheduler/scheduler/pkg/etcdutil"
+	"github.com/villanel/tinykv-scheduler/scheduler/pkg/tsoutil"
+	"github.com/villanel/tinykv-scheduler/scheduler/pkg/typeutil"
+	"github.com/villanel/tinykv-scheduler/scheduler/server/kv"
+	"github.com/villanel/tinykv-scheduler/scheduler/server/member"
 	"go.etcd.io/etcd/clientv3"
 	"go.uber.org/zap"
 )
@@ -168,10 +168,10 @@ func (t *TimestampOracle) ResetUserTimestamp(tso uint64) error {
 
 // UpdateTimestamp is used to update the timestamp.
 // This function will do two things:
-// 1. When the logical time is going to be used up, the current physical time needs to increase.
-// 2. If the time window is not enough, which means the saved etcd time minus the next physical time
-//    is less than or equal to `updateTimestampGuard`, it will need to be updated and save the
-//    next physical time plus `TsoSaveInterval` into etcd.
+//  1. When the logical time is going to be used up, the current physical time needs to increase.
+//  2. If the time window is not enough, which means the saved etcd time minus the next physical time
+//     is less than or equal to `updateTimestampGuard`, it will need to be updated and save the
+//     next physical time plus `TsoSaveInterval` into etcd.
 //
 // Here is some constraints that this function must satisfy:
 // 1. The physical time is monotonically increasing.

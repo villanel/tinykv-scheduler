@@ -19,7 +19,7 @@ import (
 	"reflect"
 	"testing"
 
-	pb "github.com/pingcap-incubator/tinykv/proto/pkg/eraftpb"
+	pb "github.com/villanel/tinykv-scheduler/proto/pkg/eraftpb"
 )
 
 type ignoreSizeHintMemStorage struct {

@@ -16,14 +16,14 @@ package server_test
 import (
 	"testing"
 
-	"github.com/pingcap-incubator/tinykv/scheduler/pkg/tempurl"
-	"github.com/pingcap-incubator/tinykv/scheduler/pkg/testutil"
-	"github.com/pingcap-incubator/tinykv/scheduler/server"
-	"github.com/pingcap-incubator/tinykv/scheduler/tests"
 	. "github.com/pingcap/check"
+	"github.com/villanel/tinykv-scheduler/scheduler/pkg/tempurl"
+	"github.com/villanel/tinykv-scheduler/scheduler/pkg/testutil"
+	"github.com/villanel/tinykv-scheduler/scheduler/server"
+	"github.com/villanel/tinykv-scheduler/scheduler/tests"
 
 	// Register schedulers.
-	_ "github.com/pingcap-incubator/tinykv/scheduler/server/schedulers"
+	_ "github.com/villanel/tinykv-scheduler/scheduler/server/schedulers"
 )
 
 func Test(t *testing.T) {

@@ -20,14 +20,14 @@ import (
 	"sync"
 	"time"
 
-	"github.com/pingcap-incubator/tinykv/proto/pkg/eraftpb"
-	"github.com/pingcap-incubator/tinykv/proto/pkg/metapb"
-	"github.com/pingcap-incubator/tinykv/proto/pkg/schedulerpb"
-	"github.com/pingcap-incubator/tinykv/scheduler/pkg/cache"
-	"github.com/pingcap-incubator/tinykv/scheduler/server/core"
-	"github.com/pingcap-incubator/tinykv/scheduler/server/schedule/operator"
-	"github.com/pingcap-incubator/tinykv/scheduler/server/schedule/opt"
 	"github.com/pingcap/log"
+	"github.com/villanel/tinykv-scheduler/proto/pkg/eraftpb"
+	"github.com/villanel/tinykv-scheduler/proto/pkg/metapb"
+	"github.com/villanel/tinykv-scheduler/proto/pkg/schedulerpb"
+	"github.com/villanel/tinykv-scheduler/scheduler/pkg/cache"
+	"github.com/villanel/tinykv-scheduler/scheduler/server/core"
+	"github.com/villanel/tinykv-scheduler/scheduler/server/schedule/operator"
+	"github.com/villanel/tinykv-scheduler/scheduler/server/schedule/opt"
 	"go.uber.org/zap"
 )
 

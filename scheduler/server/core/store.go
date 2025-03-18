@@ -18,10 +18,10 @@ import (
 	"time"
 
 	"github.com/gogo/protobuf/proto"
-	"github.com/pingcap-incubator/tinykv/proto/pkg/metapb"
-	"github.com/pingcap-incubator/tinykv/proto/pkg/schedulerpb"
 	"github.com/pingcap/errcode"
 	"github.com/pingcap/log"
+	"github.com/villanel/tinykv-scheduler/proto/pkg/metapb"
+	"github.com/villanel/tinykv-scheduler/proto/pkg/schedulerpb"
 	"go.uber.org/zap"
 )
 

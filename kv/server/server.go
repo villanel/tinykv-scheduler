@@ -2,17 +2,18 @@ package server
 
 import (
 	"context"
+
 	"github.com/Connor1996/badger"
-	"github.com/pingcap-incubator/tinykv/kv/coprocessor"
-	"github.com/pingcap-incubator/tinykv/kv/raftstore/util"
-	"github.com/pingcap-incubator/tinykv/kv/storage"
-	"github.com/pingcap-incubator/tinykv/kv/storage/raft_storage"
-	"github.com/pingcap-incubator/tinykv/kv/transaction/latches"
-	"github.com/pingcap-incubator/tinykv/kv/transaction/mvcc"
-	coppb "github.com/pingcap-incubator/tinykv/proto/pkg/coprocessor"
-	"github.com/pingcap-incubator/tinykv/proto/pkg/kvrpcpb"
-	"github.com/pingcap-incubator/tinykv/proto/pkg/tinykvpb"
 	"github.com/pingcap/tidb/kv"
+	"github.com/villanel/tinykv-scheduler/kv/coprocessor"
+	"github.com/villanel/tinykv-scheduler/kv/raftstore/util"
+	"github.com/villanel/tinykv-scheduler/kv/storage"
+	"github.com/villanel/tinykv-scheduler/kv/storage/raft_storage"
+	"github.com/villanel/tinykv-scheduler/kv/transaction/latches"
+	"github.com/villanel/tinykv-scheduler/kv/transaction/mvcc"
+	coppb "github.com/villanel/tinykv-scheduler/proto/pkg/coprocessor"
+	"github.com/villanel/tinykv-scheduler/proto/pkg/kvrpcpb"
+	"github.com/villanel/tinykv-scheduler/proto/pkg/tinykvpb"
 )
 
 var _ tinykvpb.TinyKvServer = new(Server)

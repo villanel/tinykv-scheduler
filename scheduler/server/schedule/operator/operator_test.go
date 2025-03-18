@@ -19,11 +19,11 @@ import (
 	"testing"
 	"time"
 
-	"github.com/pingcap-incubator/tinykv/proto/pkg/metapb"
-	"github.com/pingcap-incubator/tinykv/scheduler/pkg/mock/mockcluster"
-	"github.com/pingcap-incubator/tinykv/scheduler/pkg/mock/mockoption"
-	"github.com/pingcap-incubator/tinykv/scheduler/server/core"
 	. "github.com/pingcap/check"
+	"github.com/villanel/tinykv-scheduler/proto/pkg/metapb"
+	"github.com/villanel/tinykv-scheduler/scheduler/pkg/mock/mockcluster"
+	"github.com/villanel/tinykv-scheduler/scheduler/pkg/mock/mockoption"
+	"github.com/villanel/tinykv-scheduler/scheduler/server/core"
 )
 
 func Test(t *testing.T) {

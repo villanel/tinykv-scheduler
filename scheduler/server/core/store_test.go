@@ -17,8 +17,8 @@ import (
 	"sync"
 	"time"
 
-	"github.com/pingcap-incubator/tinykv/proto/pkg/metapb"
 	. "github.com/pingcap/check"
+	"github.com/villanel/tinykv-scheduler/proto/pkg/metapb"
 )
 
 var _ = Suite(&testConcurrencySuite{})

@@ -18,9 +18,9 @@ import (
 	"strings"
 	"time"
 
-	"github.com/pingcap-incubator/tinykv/proto/pkg/schedulerpb"
-	"github.com/pingcap-incubator/tinykv/scheduler/server/config"
 	check "github.com/pingcap/check"
+	"github.com/villanel/tinykv-scheduler/proto/pkg/schedulerpb"
+	"github.com/villanel/tinykv-scheduler/scheduler/server/config"
 	"google.golang.org/grpc"
 )
 

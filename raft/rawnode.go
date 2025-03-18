@@ -16,7 +16,8 @@ package raft
 
 import (
 	"errors"
-	pb "github.com/pingcap-incubator/tinykv/proto/pkg/eraftpb"
+
+	pb "github.com/villanel/tinykv-scheduler/proto/pkg/eraftpb"
 )
 
 // ErrStepLocalMsg is returned when try to step a local raft message

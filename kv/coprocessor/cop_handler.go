@@ -19,10 +19,6 @@ import (
 
 	"github.com/golang/protobuf/proto"
 	"github.com/juju/errors"
-	"github.com/pingcap-incubator/tinykv/kv/coprocessor/rowcodec"
-	"github.com/pingcap-incubator/tinykv/kv/storage"
-	"github.com/pingcap-incubator/tinykv/kv/transaction/mvcc"
-	"github.com/pingcap-incubator/tinykv/proto/pkg/coprocessor"
 	"github.com/pingcap/tidb/expression"
 	"github.com/pingcap/tidb/expression/aggregation"
 	"github.com/pingcap/tidb/kv"
@@ -32,6 +28,10 @@ import (
 	"github.com/pingcap/tidb/tablecodec"
 	"github.com/pingcap/tidb/types"
 	"github.com/pingcap/tipb/go-tipb"
+	"github.com/villanel/tinykv-scheduler/kv/coprocessor/rowcodec"
+	"github.com/villanel/tinykv-scheduler/kv/storage"
+	"github.com/villanel/tinykv-scheduler/kv/transaction/mvcc"
+	"github.com/villanel/tinykv-scheduler/proto/pkg/coprocessor"
 )
 
 var dummySlice = make([]byte, 0)

@@ -3,10 +3,10 @@ package util
 import (
 	"testing"
 
-	"github.com/pingcap-incubator/tinykv/proto/pkg/eraftpb"
-	"github.com/pingcap-incubator/tinykv/proto/pkg/metapb"
-	"github.com/pingcap-incubator/tinykv/proto/pkg/raft_cmdpb"
 	"github.com/stretchr/testify/assert"
+	"github.com/villanel/tinykv-scheduler/proto/pkg/eraftpb"
+	"github.com/villanel/tinykv-scheduler/proto/pkg/metapb"
+	"github.com/villanel/tinykv-scheduler/proto/pkg/raft_cmdpb"
 )
 
 func TestCheckKeyInRegion(t *testing.T) {

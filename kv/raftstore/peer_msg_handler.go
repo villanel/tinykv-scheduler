@@ -2,22 +2,23 @@ package raftstore
 
 import (
 	"fmt"
-	"github.com/pingcap-incubator/tinykv/kv/raftstore/meta"
-	"github.com/pingcap-incubator/tinykv/kv/util/engine_util"
-	"github.com/pingcap-incubator/tinykv/proto/pkg/eraftpb"
 	"time"
 
+	"github.com/villanel/tinykv-scheduler/kv/raftstore/meta"
+	"github.com/villanel/tinykv-scheduler/kv/util/engine_util"
+	"github.com/villanel/tinykv-scheduler/proto/pkg/eraftpb"
+
 	"github.com/Connor1996/badger/y"
-	"github.com/pingcap-incubator/tinykv/kv/raftstore/message"
-	"github.com/pingcap-incubator/tinykv/kv/raftstore/runner"
-	"github.com/pingcap-incubator/tinykv/kv/raftstore/snap"
-	"github.com/pingcap-incubator/tinykv/kv/raftstore/util"
-	"github.com/pingcap-incubator/tinykv/log"
-	"github.com/pingcap-incubator/tinykv/proto/pkg/metapb"
-	"github.com/pingcap-incubator/tinykv/proto/pkg/raft_cmdpb"
-	rspb "github.com/pingcap-incubator/tinykv/proto/pkg/raft_serverpb"
-	"github.com/pingcap-incubator/tinykv/scheduler/pkg/btree"
 	"github.com/pingcap/errors"
+	"github.com/villanel/tinykv-scheduler/kv/raftstore/message"
+	"github.com/villanel/tinykv-scheduler/kv/raftstore/runner"
+	"github.com/villanel/tinykv-scheduler/kv/raftstore/snap"
+	"github.com/villanel/tinykv-scheduler/kv/raftstore/util"
+	"github.com/villanel/tinykv-scheduler/log"
+	"github.com/villanel/tinykv-scheduler/proto/pkg/metapb"
+	"github.com/villanel/tinykv-scheduler/proto/pkg/raft_cmdpb"
+	rspb "github.com/villanel/tinykv-scheduler/proto/pkg/raft_serverpb"
+	"github.com/villanel/tinykv-scheduler/scheduler/pkg/btree"
 )
 
 type PeerTick int
@@ -98,7 +99,8 @@ func (d *peerMsgHandler) getProposal(entry *eraftpb.Entry) *proposal {
 
 	return nil
 }
-//分别处理request
+
+// 分别处理request
 func (d *peerMsgHandler) process(entry *eraftpb.Entry, wb *engine_util.WriteBatch) *engine_util.WriteBatch {
 	if entry.EntryType == eraftpb.EntryType_EntryConfChange {
 		cc := &eraftpb.ConfChange{}
@@ -599,9 +601,9 @@ func (d *peerMsgHandler) validateRaftMessage(msg *rspb.RaftMessage) bool {
 	return true
 }
 
-/// Checks if the message is sent to the correct peer.
-///
-/// Returns true means that the message can be dropped silently.
+// / Checks if the message is sent to the correct peer.
+// /
+// / Returns true means that the message can be dropped silently.
 func (d *peerMsgHandler) checkMessage(msg *rspb.RaftMessage) bool {
 	fromEpoch := msg.GetRegionEpoch()
 	isVoteMsg := util.IsVoteMessage(msg.Message)

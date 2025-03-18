@@ -21,16 +21,16 @@ import (
 	"sync"
 	"time"
 
-	"github.com/pingcap-incubator/tinykv/scheduler/pkg/tempurl"
-	"github.com/pingcap-incubator/tinykv/scheduler/pkg/testutil"
-	"github.com/pingcap-incubator/tinykv/scheduler/pkg/typeutil"
-	"github.com/pingcap-incubator/tinykv/scheduler/server/config"
 	"github.com/pingcap/check"
 	"github.com/pingcap/log"
+	"github.com/villanel/tinykv-scheduler/scheduler/pkg/tempurl"
+	"github.com/villanel/tinykv-scheduler/scheduler/pkg/testutil"
+	"github.com/villanel/tinykv-scheduler/scheduler/pkg/typeutil"
+	"github.com/villanel/tinykv-scheduler/scheduler/server/config"
 	"go.etcd.io/etcd/embed"
 
 	// Register schedulers
-	_ "github.com/pingcap-incubator/tinykv/scheduler/server/schedulers"
+	_ "github.com/villanel/tinykv-scheduler/scheduler/server/schedulers"
 )
 
 // CleanupFunc closes test pd server(s) and deletes any files left behind.

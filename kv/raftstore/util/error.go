@@ -3,9 +3,9 @@ package util
 import (
 	"fmt"
 
-	"github.com/pingcap-incubator/tinykv/proto/pkg/errorpb"
-	"github.com/pingcap-incubator/tinykv/proto/pkg/metapb"
 	"github.com/pingcap/errors"
+	"github.com/villanel/tinykv-scheduler/proto/pkg/errorpb"
+	"github.com/villanel/tinykv-scheduler/proto/pkg/metapb"
 )
 
 type ErrNotLeader struct {

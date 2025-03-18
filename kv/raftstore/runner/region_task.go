@@ -7,15 +7,15 @@ import (
 
 	"github.com/Connor1996/badger"
 	"github.com/juju/errors"
-	"github.com/pingcap-incubator/tinykv/kv/raftstore/meta"
-	"github.com/pingcap-incubator/tinykv/kv/raftstore/snap"
-	"github.com/pingcap-incubator/tinykv/kv/raftstore/util"
-	"github.com/pingcap-incubator/tinykv/kv/util/engine_util"
-	"github.com/pingcap-incubator/tinykv/kv/util/worker"
-	"github.com/pingcap-incubator/tinykv/log"
-	"github.com/pingcap-incubator/tinykv/proto/pkg/eraftpb"
-	"github.com/pingcap-incubator/tinykv/proto/pkg/metapb"
-	rspb "github.com/pingcap-incubator/tinykv/proto/pkg/raft_serverpb"
+	"github.com/villanel/tinykv-scheduler/kv/raftstore/meta"
+	"github.com/villanel/tinykv-scheduler/kv/raftstore/snap"
+	"github.com/villanel/tinykv-scheduler/kv/raftstore/util"
+	"github.com/villanel/tinykv-scheduler/kv/util/engine_util"
+	"github.com/villanel/tinykv-scheduler/kv/util/worker"
+	"github.com/villanel/tinykv-scheduler/log"
+	"github.com/villanel/tinykv-scheduler/proto/pkg/eraftpb"
+	"github.com/villanel/tinykv-scheduler/proto/pkg/metapb"
+	rspb "github.com/villanel/tinykv-scheduler/proto/pkg/raft_serverpb"
 )
 
 // There're some tasks for region worker, such as:

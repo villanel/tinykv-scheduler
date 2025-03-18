@@ -8,9 +8,6 @@ import (
 	"sort"
 
 	"github.com/juju/errors"
-	"github.com/pingcap-incubator/tinykv/kv/coprocessor/rowcodec"
-	"github.com/pingcap-incubator/tinykv/kv/storage"
-	"github.com/pingcap-incubator/tinykv/kv/transaction/mvcc"
 	"github.com/pingcap/tidb/expression"
 	"github.com/pingcap/tidb/expression/aggregation"
 	"github.com/pingcap/tidb/kv"
@@ -24,6 +21,9 @@ import (
 	"github.com/pingcap/tidb/util/codec"
 	mockpkg "github.com/pingcap/tidb/util/mock"
 	"github.com/pingcap/tipb/go-tipb"
+	"github.com/villanel/tinykv-scheduler/kv/coprocessor/rowcodec"
+	"github.com/villanel/tinykv-scheduler/kv/storage"
+	"github.com/villanel/tinykv-scheduler/kv/transaction/mvcc"
 )
 
 const chunkMaxRows = 1024
@@ -36,7 +36,8 @@ const (
 
 // buildClosureExecutor build a closureExecutor for the DAGRequest.
 // Currently the composition of executors are:
-// 	tableScan|indexScan [selection] [topN | limit | agg]
+//
+//	tableScan|indexScan [selection] [topN | limit | agg]
 func (svr *CopHandler) buildClosureExecutor(dagCtx *dagContext, dagReq *tipb.DAGRequest) (*closureExecutor, error) {
 	ce, err := svr.newClosureExecutor(dagCtx, dagReq)
 	if err != nil {

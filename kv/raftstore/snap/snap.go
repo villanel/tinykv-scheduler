@@ -14,13 +14,13 @@ import (
 	"github.com/Connor1996/badger"
 	"github.com/Connor1996/badger/table"
 
-	"github.com/pingcap-incubator/tinykv/kv/util"
-	"github.com/pingcap-incubator/tinykv/kv/util/engine_util"
-	"github.com/pingcap-incubator/tinykv/log"
-	"github.com/pingcap-incubator/tinykv/proto/pkg/eraftpb"
-	"github.com/pingcap-incubator/tinykv/proto/pkg/metapb"
-	rspb "github.com/pingcap-incubator/tinykv/proto/pkg/raft_serverpb"
 	"github.com/pingcap/errors"
+	"github.com/villanel/tinykv-scheduler/kv/util"
+	"github.com/villanel/tinykv-scheduler/kv/util/engine_util"
+	"github.com/villanel/tinykv-scheduler/log"
+	"github.com/villanel/tinykv-scheduler/proto/pkg/eraftpb"
+	"github.com/villanel/tinykv-scheduler/proto/pkg/metapb"
+	rspb "github.com/villanel/tinykv-scheduler/proto/pkg/raft_serverpb"
 )
 
 type SnapStateType int
@@ -108,11 +108,11 @@ func NewApplyOptions(db *badger.DB, region *metapb.Region) *ApplyOptions {
 
 // `Snapshot` is an interface for snapshot.
 // It's used in these scenarios:
-//   1. build local snapshot
-//   2. read local snapshot and then replicate it to remote raftstores
-//   3. receive snapshot from remote raftstore and write it to local storage
-//   4. apply snapshot
-//   5. snapshot gc
+//  1. build local snapshot
+//  2. read local snapshot and then replicate it to remote raftstores
+//  3. receive snapshot from remote raftstore and write it to local storage
+//  4. apply snapshot
+//  5. snapshot gc
 type Snapshot interface {
 	io.Reader
 	io.Writer

@@ -2,7 +2,8 @@ package mvcc
 
 import (
 	"bytes"
-	"github.com/pingcap-incubator/tinykv/kv/util/engine_util"
+
+	"github.com/villanel/tinykv-scheduler/kv/util/engine_util"
 )
 
 // Scanner is used for reading multiple sequential key/value pairs from the storage layer. It is aware of the implementation
@@ -32,7 +33,7 @@ func (scan *Scanner) Close() {
 }
 
 // Next returns the next key/value pair from the scanner. If the scanner is exhausted, then it will return `nil, nil, nil`.
-//从当前item取得value再将item转向下个key
+// 从当前item取得value再将item转向下个key
 func (scan *Scanner) Next() ([]byte, []byte, error) {
 	if scan.key == nil {
 		return nil, nil, nil

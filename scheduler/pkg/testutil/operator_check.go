@@ -14,8 +14,8 @@
 package testutil
 
 import (
-	"github.com/pingcap-incubator/tinykv/scheduler/server/schedule/operator"
 	check "github.com/pingcap/check"
+	"github.com/villanel/tinykv-scheduler/scheduler/server/schedule/operator"
 )
 
 // CheckAddPeer checks if the operator is to add peer on specified store.

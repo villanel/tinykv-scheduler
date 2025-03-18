@@ -2,10 +2,10 @@ package runner
 
 import (
 	"github.com/Connor1996/badger"
-	"github.com/pingcap-incubator/tinykv/kv/raftstore/meta"
-	"github.com/pingcap-incubator/tinykv/kv/util/engine_util"
-	"github.com/pingcap-incubator/tinykv/kv/util/worker"
-	"github.com/pingcap-incubator/tinykv/log"
+	"github.com/villanel/tinykv-scheduler/kv/raftstore/meta"
+	"github.com/villanel/tinykv-scheduler/kv/util/engine_util"
+	"github.com/villanel/tinykv-scheduler/kv/util/worker"
+	"github.com/villanel/tinykv-scheduler/log"
 )
 
 type RaftLogGCTask struct {

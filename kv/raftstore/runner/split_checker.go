@@ -4,14 +4,14 @@ import (
 	"encoding/hex"
 
 	"github.com/Connor1996/badger"
-	"github.com/pingcap-incubator/tinykv/kv/config"
-	"github.com/pingcap-incubator/tinykv/kv/raftstore/message"
-	"github.com/pingcap-incubator/tinykv/kv/raftstore/util"
-	"github.com/pingcap-incubator/tinykv/kv/util/codec"
-	"github.com/pingcap-incubator/tinykv/kv/util/engine_util"
-	"github.com/pingcap-incubator/tinykv/kv/util/worker"
-	"github.com/pingcap-incubator/tinykv/log"
-	"github.com/pingcap-incubator/tinykv/proto/pkg/metapb"
+	"github.com/villanel/tinykv-scheduler/kv/config"
+	"github.com/villanel/tinykv-scheduler/kv/raftstore/message"
+	"github.com/villanel/tinykv-scheduler/kv/raftstore/util"
+	"github.com/villanel/tinykv-scheduler/kv/util/codec"
+	"github.com/villanel/tinykv-scheduler/kv/util/engine_util"
+	"github.com/villanel/tinykv-scheduler/kv/util/worker"
+	"github.com/villanel/tinykv-scheduler/log"
+	"github.com/villanel/tinykv-scheduler/proto/pkg/metapb"
 )
 
 type SplitCheckTask struct {
@@ -33,7 +33,7 @@ func NewSplitCheckHandler(engine *badger.DB, router message.RaftRouter, conf *co
 	return runner
 }
 
-/// run checks a region with split checkers to produce split keys and generates split admin command.
+// / run checks a region with split checkers to produce split keys and generates split admin command.
 func (r *splitCheckHandler) Handle(t worker.Task) {
 	spCheckTask, ok := t.(*SplitCheckTask)
 	if !ok {
@@ -69,7 +69,7 @@ func (r *splitCheckHandler) Handle(t worker.Task) {
 	}
 }
 
-/// SplitCheck gets the split keys by scanning the range.
+// / SplitCheck gets the split keys by scanning the range.
 func (r *splitCheckHandler) splitCheck(regionID uint64, startKey, endKey []byte) []byte {
 	txn := r.engine.NewTransaction(false)
 	defer txn.Discard()

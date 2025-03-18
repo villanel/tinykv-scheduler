@@ -16,9 +16,9 @@ package core
 import (
 	"math"
 
-	"github.com/pingcap-incubator/tinykv/proto/pkg/metapb"
-	"github.com/pingcap-incubator/tinykv/scheduler/server/kv"
 	. "github.com/pingcap/check"
+	"github.com/villanel/tinykv-scheduler/proto/pkg/metapb"
+	"github.com/villanel/tinykv-scheduler/scheduler/server/kv"
 )
 
 var _ = Suite(&testKVSuite{})

@@ -10,12 +10,12 @@ import (
 	"testing"
 
 	"github.com/Connor1996/badger"
-	"github.com/pingcap-incubator/tinykv/kv/util/engine_util"
-	"github.com/pingcap-incubator/tinykv/proto/pkg/metapb"
-	rspb "github.com/pingcap-incubator/tinykv/proto/pkg/raft_serverpb"
 	"github.com/pingcap/errors"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
+	"github.com/villanel/tinykv-scheduler/kv/util/engine_util"
+	"github.com/villanel/tinykv-scheduler/proto/pkg/metapb"
+	rspb "github.com/villanel/tinykv-scheduler/proto/pkg/raft_serverpb"
 )
 
 var (

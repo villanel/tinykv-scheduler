@@ -33,11 +33,10 @@ import (
 	"github.com/Connor1996/badger/y"
 	"github.com/golang/protobuf/proto"
 	"github.com/juju/errors"
-	"github.com/pingcap-incubator/tinykv/kv/storage"
-	"github.com/pingcap-incubator/tinykv/kv/transaction/mvcc"
-	"github.com/pingcap-incubator/tinykv/proto/pkg/coprocessor"
+	"github.com/villanel/tinykv-scheduler/kv/storage"
+	"github.com/villanel/tinykv-scheduler/kv/transaction/mvcc"
+	"github.com/villanel/tinykv-scheduler/proto/pkg/coprocessor"
 
-	"github.com/pingcap-incubator/tinykv/kv/coprocessor/rowcodec"
 	"github.com/pingcap/tidb/kv"
 	"github.com/pingcap/tidb/parser/ast"
 	"github.com/pingcap/tidb/parser/charset"
@@ -49,6 +48,7 @@ import (
 	"github.com/pingcap/tidb/util/chunk"
 	"github.com/pingcap/tidb/util/codec"
 	"github.com/pingcap/tipb/go-tipb"
+	"github.com/villanel/tinykv-scheduler/kv/coprocessor/rowcodec"
 	"golang.org/x/net/context"
 )
 

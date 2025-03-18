@@ -4,11 +4,11 @@ import (
 	"context"
 	"time"
 
-	"github.com/pingcap-incubator/tinykv/kv/util/worker"
+	"github.com/villanel/tinykv-scheduler/kv/util/worker"
 
-	"github.com/pingcap-incubator/tinykv/kv/raftstore/scheduler_client"
-	"github.com/pingcap-incubator/tinykv/proto/pkg/metapb"
 	"github.com/pingcap/errors"
+	"github.com/villanel/tinykv-scheduler/kv/raftstore/scheduler_client"
+	"github.com/villanel/tinykv-scheduler/proto/pkg/metapb"
 )
 
 // Handle will resolve t's storeID into the address of the TinyKV node which should handle t. t's callback is then

@@ -16,13 +16,13 @@ package checker
 import (
 	"fmt"
 
-	"github.com/pingcap-incubator/tinykv/proto/pkg/metapb"
-	"github.com/pingcap-incubator/tinykv/scheduler/server/core"
-	"github.com/pingcap-incubator/tinykv/scheduler/server/schedule/filter"
-	"github.com/pingcap-incubator/tinykv/scheduler/server/schedule/operator"
-	"github.com/pingcap-incubator/tinykv/scheduler/server/schedule/opt"
-	"github.com/pingcap-incubator/tinykv/scheduler/server/schedule/selector"
 	"github.com/pingcap/log"
+	"github.com/villanel/tinykv-scheduler/proto/pkg/metapb"
+	"github.com/villanel/tinykv-scheduler/scheduler/server/core"
+	"github.com/villanel/tinykv-scheduler/scheduler/server/schedule/filter"
+	"github.com/villanel/tinykv-scheduler/scheduler/server/schedule/operator"
+	"github.com/villanel/tinykv-scheduler/scheduler/server/schedule/opt"
+	"github.com/villanel/tinykv-scheduler/scheduler/server/schedule/selector"
 	"go.uber.org/zap"
 )
 

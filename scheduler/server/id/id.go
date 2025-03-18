@@ -17,11 +17,11 @@ import (
 	"path"
 	"sync"
 
-	"github.com/pingcap-incubator/tinykv/scheduler/pkg/etcdutil"
-	"github.com/pingcap-incubator/tinykv/scheduler/pkg/typeutil"
-	"github.com/pingcap-incubator/tinykv/scheduler/server/kv"
 	"github.com/pingcap/log"
 	"github.com/pkg/errors"
+	"github.com/villanel/tinykv-scheduler/scheduler/pkg/etcdutil"
+	"github.com/villanel/tinykv-scheduler/scheduler/pkg/typeutil"
+	"github.com/villanel/tinykv-scheduler/scheduler/server/kv"
 	"go.etcd.io/etcd/clientv3"
 	"go.uber.org/zap"
 )

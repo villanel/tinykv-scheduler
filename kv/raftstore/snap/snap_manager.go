@@ -12,9 +12,9 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/pingcap-incubator/tinykv/log"
-	rspb "github.com/pingcap-incubator/tinykv/proto/pkg/raft_serverpb"
 	"github.com/pingcap/errors"
+	"github.com/villanel/tinykv-scheduler/log"
+	rspb "github.com/villanel/tinykv-scheduler/proto/pkg/raft_serverpb"
 )
 
 type SnapEntry int

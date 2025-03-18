@@ -16,11 +16,12 @@ package raft
 
 import (
 	"errors"
-	"github.com/pingcap-incubator/tinykv/log"
-	pb "github.com/pingcap-incubator/tinykv/proto/pkg/eraftpb"
 	"math/rand"
 	"sync"
 	"time"
+
+	"github.com/villanel/tinykv-scheduler/log"
+	pb "github.com/villanel/tinykv-scheduler/proto/pkg/eraftpb"
 )
 
 type lockedRand struct {
@@ -795,7 +796,7 @@ func (pr *Progress) MaybeUpdate(n uint64) bool {
 	return updated
 }
 
-//更新大部分节点已commit日志的index
+// 更新大部分节点已commit日志的index
 func (r *Raft) maybeCommit() bool {
 	n := len(r.Prs)
 	if n == 0 {
@@ -838,7 +839,6 @@ func (r *Raft) hardState() pb.HardState {
 	}
 }
 
-//
 func (r *Raft) sendAppendResponse(to uint64, reject bool, term, index uint64) {
 	msg := pb.Message{
 		MsgType: pb.MessageType_MsgAppendResponse,

@@ -19,13 +19,13 @@ import (
 	"math/rand"
 	"sync"
 
-	"github.com/pingcap-incubator/tinykv/proto/pkg/metapb"
-	"github.com/pingcap-incubator/tinykv/proto/pkg/schedulerpb"
-	"github.com/pingcap-incubator/tinykv/scheduler/pkg/mock/mockid"
-	"github.com/pingcap-incubator/tinykv/scheduler/pkg/testutil"
-	"github.com/pingcap-incubator/tinykv/scheduler/server/core"
-	"github.com/pingcap-incubator/tinykv/scheduler/server/kv"
 	. "github.com/pingcap/check"
+	"github.com/villanel/tinykv-scheduler/proto/pkg/metapb"
+	"github.com/villanel/tinykv-scheduler/proto/pkg/schedulerpb"
+	"github.com/villanel/tinykv-scheduler/scheduler/pkg/mock/mockid"
+	"github.com/villanel/tinykv-scheduler/scheduler/pkg/testutil"
+	"github.com/villanel/tinykv-scheduler/scheduler/server/core"
+	"github.com/villanel/tinykv-scheduler/scheduler/server/kv"
 )
 
 const (

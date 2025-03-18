@@ -25,10 +25,10 @@ import (
 	"time"
 
 	"github.com/BurntSushi/toml"
-	"github.com/pingcap-incubator/tinykv/scheduler/pkg/typeutil"
-	"github.com/pingcap-incubator/tinykv/scheduler/server/schedule"
 	"github.com/pingcap/log"
 	"github.com/pkg/errors"
+	"github.com/villanel/tinykv-scheduler/scheduler/pkg/typeutil"
+	"github.com/villanel/tinykv-scheduler/scheduler/server/schedule"
 	"go.etcd.io/etcd/embed"
 	"go.etcd.io/etcd/pkg/transport"
 	"go.uber.org/zap"

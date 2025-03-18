@@ -16,8 +16,8 @@ package schedulers
 import (
 	"time"
 
-	"github.com/pingcap-incubator/tinykv/scheduler/server/core"
 	"github.com/pkg/errors"
+	"github.com/villanel/tinykv-scheduler/scheduler/server/core"
 )
 
 const (

@@ -29,7 +29,7 @@ Also, you’d better read the overview of TiKV and PD's design to get a general 
 First, please clone the repository with git to get the source code of the project.
 
 ``` bash
-git clone https://github.com/pingcap-incubator/tinykv.git
+git clone https://github.com/villanel/tinykv-scheduler.git
 ```
 
 Then make sure you have [go](https://golang.org/doc/install) >= 1.13 toolchains installed. You should also have `make` installed.

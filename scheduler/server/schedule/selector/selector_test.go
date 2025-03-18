@@ -16,10 +16,10 @@ package selector
 import (
 	"testing"
 
-	"github.com/pingcap-incubator/tinykv/scheduler/pkg/mock/mockcluster"
-	"github.com/pingcap-incubator/tinykv/scheduler/pkg/mock/mockoption"
-	"github.com/pingcap-incubator/tinykv/scheduler/server/core"
 	. "github.com/pingcap/check"
+	"github.com/villanel/tinykv-scheduler/scheduler/pkg/mock/mockcluster"
+	"github.com/villanel/tinykv-scheduler/scheduler/pkg/mock/mockoption"
+	"github.com/villanel/tinykv-scheduler/scheduler/server/core"
 )
 
 func Test(t *testing.T) {

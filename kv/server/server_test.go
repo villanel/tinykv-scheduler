@@ -4,12 +4,12 @@ import (
 	"os"
 	"testing"
 
-	"github.com/pingcap-incubator/tinykv/kv/config"
-	"github.com/pingcap-incubator/tinykv/kv/storage"
-	"github.com/pingcap-incubator/tinykv/kv/storage/standalone_storage"
-	"github.com/pingcap-incubator/tinykv/kv/util/engine_util"
-	"github.com/pingcap-incubator/tinykv/proto/pkg/kvrpcpb"
 	"github.com/stretchr/testify/assert"
+	"github.com/villanel/tinykv-scheduler/kv/config"
+	"github.com/villanel/tinykv-scheduler/kv/storage"
+	"github.com/villanel/tinykv-scheduler/kv/storage/standalone_storage"
+	"github.com/villanel/tinykv-scheduler/kv/util/engine_util"
+	"github.com/villanel/tinykv-scheduler/proto/pkg/kvrpcpb"
 )
 
 func Set(s *standalone_storage.StandAloneStorage, cf string, key []byte, value []byte) error {

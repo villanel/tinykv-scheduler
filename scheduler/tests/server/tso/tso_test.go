@@ -19,10 +19,10 @@ import (
 	"testing"
 	"time"
 
-	"github.com/pingcap-incubator/tinykv/proto/pkg/schedulerpb"
-	"github.com/pingcap-incubator/tinykv/scheduler/pkg/testutil"
-	"github.com/pingcap-incubator/tinykv/scheduler/tests"
 	. "github.com/pingcap/check"
+	"github.com/villanel/tinykv-scheduler/proto/pkg/schedulerpb"
+	"github.com/villanel/tinykv-scheduler/scheduler/pkg/testutil"
+	"github.com/villanel/tinykv-scheduler/scheduler/tests"
 )
 
 func Test(t *testing.T) {

@@ -4,14 +4,14 @@ import (
 	"context"
 
 	"github.com/Connor1996/badger"
-	"github.com/pingcap-incubator/tinykv/kv/raftstore/message"
-	"github.com/pingcap-incubator/tinykv/kv/raftstore/scheduler_client"
-	"github.com/pingcap-incubator/tinykv/kv/util/worker"
-	"github.com/pingcap-incubator/tinykv/log"
-	"github.com/pingcap-incubator/tinykv/proto/pkg/metapb"
-	"github.com/pingcap-incubator/tinykv/proto/pkg/raft_cmdpb"
-	"github.com/pingcap-incubator/tinykv/proto/pkg/schedulerpb"
 	"github.com/shirou/gopsutil/disk"
+	"github.com/villanel/tinykv-scheduler/kv/raftstore/message"
+	"github.com/villanel/tinykv-scheduler/kv/raftstore/scheduler_client"
+	"github.com/villanel/tinykv-scheduler/kv/util/worker"
+	"github.com/villanel/tinykv-scheduler/log"
+	"github.com/villanel/tinykv-scheduler/proto/pkg/metapb"
+	"github.com/villanel/tinykv-scheduler/proto/pkg/raft_cmdpb"
+	"github.com/villanel/tinykv-scheduler/proto/pkg/schedulerpb"
 )
 
 type SchedulerAskSplitTask struct {

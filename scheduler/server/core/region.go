@@ -21,8 +21,8 @@ import (
 	"strings"
 
 	"github.com/gogo/protobuf/proto"
-	"github.com/pingcap-incubator/tinykv/proto/pkg/metapb"
-	"github.com/pingcap-incubator/tinykv/proto/pkg/schedulerpb"
+	"github.com/villanel/tinykv-scheduler/proto/pkg/metapb"
+	"github.com/villanel/tinykv-scheduler/proto/pkg/schedulerpb"
 )
 
 // RegionInfo records detail region info.

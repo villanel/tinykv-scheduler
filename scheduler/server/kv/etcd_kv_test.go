@@ -22,8 +22,8 @@ import (
 	"strconv"
 	"testing"
 
-	"github.com/pingcap-incubator/tinykv/scheduler/pkg/tempurl"
 	. "github.com/pingcap/check"
+	"github.com/villanel/tinykv-scheduler/scheduler/pkg/tempurl"
 	"go.etcd.io/etcd/clientv3"
 	"go.etcd.io/etcd/embed"
 )

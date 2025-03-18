@@ -18,9 +18,9 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/pingcap-incubator/tinykv/scheduler/pkg/testutil"
-	"github.com/pingcap-incubator/tinykv/scheduler/server/config"
 	. "github.com/pingcap/check"
+	"github.com/villanel/tinykv-scheduler/scheduler/pkg/testutil"
+	"github.com/villanel/tinykv-scheduler/scheduler/server/config"
 )
 
 func TestServer(t *testing.T) {
