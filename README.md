@@ -5,11 +5,9 @@
 make scheduler
 ```
 
-It builds the binary of `tinykv-server` and `tinyscheduler-server` to `bin` dir.
+It builds the binary of  `tinyscheduler-server` to `bin` dir.
 
 ### Run
-
-Put the binary of `tinyscheduler-server`, `tinykv-server` and `tinysql-server` into a single dir.
 
 Under the binary dir, run the following commands:
 
@@ -18,19 +16,6 @@ mkdir -p data
 ```
 
 ```
-./tinyscheduler-server
+./tinyscheduler-server  --advertise-peer-urls=http://[listen-peer-urls]:2380  --advertise-client-urls=http://[listen-client-urls]:2379
 ```
 
-```
-./tinykv-server -path=data
-```
-
-```
-./tinysql-server --store=tikv --path="127.0.0.1:2379"
-```
-
-### Play
-
-```
-mysql -u root -h 127.0.0.1 -P 4000
-```
