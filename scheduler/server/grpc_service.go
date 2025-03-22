@@ -173,9 +173,9 @@ func (s *Server) GetStore(ctx context.Context, request *schedulerpb.GetStoreRequ
 	if stores == nil {
 		return nil, status.Errorf(codes.Unknown, "invalid store ID, not foun")
 	}
-	for _, i := range stores {
-		print(i.GetID())
-	}
+	// for _, i := range stores {
+	// 	print(i.GetID())
+	// }
 	storeID := request.GetStoreId()
 	store := cluster.GetStore(storeID)
 	if store == nil {

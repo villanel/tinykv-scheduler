@@ -25,8 +25,10 @@ import (
 
 // options for interval of schedulers
 const (
-	MaxScheduleInterval     = time.Second * 5
-	MinScheduleInterval     = time.Millisecond * 10
+	// MaxScheduleInterval     = time.Second * 5
+	// MinScheduleInterval     = time.Millisecond * 10
+	MaxScheduleInterval     = time.Minute * 5
+	MinScheduleInterval     = time.Minute * 60
 	MinSlowScheduleInterval = time.Second * 3
 
 	ScheduleIntervalFactor = 1.3

@@ -38,6 +38,7 @@ type Client interface {
 	IsBootstrapped(ctx context.Context) (bool, error)
 	PutStore(ctx context.Context, store *metapb.Store) error
 	GetStore(ctx context.Context, storeID uint64) (*metapb.Store, error)
+	GetStoreState(ctx context.Context, storeID uint64) (*schedulerpb.StoreStats, error)
 	GetRegion(ctx context.Context, key []byte) (*metapb.Region, *metapb.Peer, error)
 	GetRegionByID(ctx context.Context, regionID uint64) (*metapb.Region, *metapb.Peer, error)
 	AskSplit(ctx context.Context, region *metapb.Region) (*schedulerpb.AskSplitResponse, error)
@@ -508,6 +509,24 @@ func (c *client) GetStore(ctx context.Context, storeID uint64) (*metapb.Store, e
 	return resp.Store, nil
 }
 
+func (c *client) GetStoreState(ctx context.Context, storeID uint64) (*schedulerpb.StoreStats, error) {
+	var resp *schedulerpb.GetStoreResponse
+	err := c.doRequest(ctx, func(ctx context.Context, client schedulerpb.SchedulerClient) error {
+		var err1 error
+		resp, err1 = client.GetStore(ctx, &schedulerpb.GetStoreRequest{
+			Header:  c.requestHeader(),
+			StoreId: storeID,
+		})
+		return err1
+	})
+	if err != nil {
+		return nil, err
+	}
+	if herr := resp.Header.GetError(); herr != nil {
+		return nil, errors.New(herr.String())
+	}
+	return resp.Stats, nil
+}
 func (c *client) GetRegion(ctx context.Context, key []byte) (*metapb.Region, *metapb.Peer, error) {
 	var resp *schedulerpb.GetRegionResponse
 	err := c.doRequest(ctx, func(ctx context.Context, client schedulerpb.SchedulerClient) error {
