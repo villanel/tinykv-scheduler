@@ -29,7 +29,7 @@ const (
 	// MinScheduleInterval     = time.Millisecond * 10
 	MaxScheduleInterval     = time.Minute * 5
 	MinScheduleInterval     = time.Minute * 60
-	MinSlowScheduleInterval = time.Second * 3
+	MinSlowScheduleInterval = time.Minute * 3
 
 	ScheduleIntervalFactor = 1.3
 )
